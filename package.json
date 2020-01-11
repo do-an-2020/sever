@@ -4,9 +4,7 @@
   "description": "cai j day",
   "homepage": "http://localhost",
   "author": {
-    "name": "a",
-    "email": "a",
-    "url": "a"
+    "name": "a"
   },
   "main": "app.js",
   "dependencies": {
