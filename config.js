@@ -1,12 +1,12 @@
-var config = {};
+const config = {}
 
-config.admin={};
+config.admin = {}
 
-config.app={};
+config.app = {}
 
-config.admin.name="a";
-config.admin.email="a";
-config.app.name="backend";
-config.app.url="http://localhost";
+config.admin.name = 'a'
+config.admin.email = 'a'
+config.app.name = 'backend'
+config.app.url = 'http://localhost'
 
-module.exports=config
+module.exports = config
