@@ -72,9 +72,9 @@
     "webpack-stream": "^5.2.1"
   },
   "scripts": {
-    "server": "nodemon app.js --exec babel-node",
+    "sever": "nodemon app.js --exec babel-node",
     "react": "webpack",
-    "start": "concurrently \"npm run react\" \"npm run server\"",
+    "start": "concurrently \"npm run react\" \"npm run sever\"",
     "lint": "eslint ."
   }
 }

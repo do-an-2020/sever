@@ -4,21 +4,25 @@ import { databaseName } from './config'
 mongoose.Promise = global.Promise
 
 const options = {
-  db: {
-    native_parser: true,
-  },
-  server: {
-    poolSize: 5,
-  },
+  // db: {
+  //   native_parser: true,
+  // },
+  // server: {
+  //   poolSize: 5,
+  // },
+  autoCreate: true,
+  autoIndex: true,
   // user: 'admin',
-  // pass: 'admin'
+  // pass: 'admin',
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 }
 
-mongoose.connect(databaseName, options).then(
-  () => {
+mongoose
+  .connect(databaseName, options)
+  .then(() => {
     console.log('connect successfully')
-  },
-  () => {
-    console.log('connect error')
-  }
-)
+  })
+  .catch(err => {
+    console.log('connect error', err)
+  })
