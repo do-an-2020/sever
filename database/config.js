@@ -1,7 +1,7 @@
-export const databaseName = 'mongodb://localhost:27017/myAppDB'
+export const databaseName = 'mongodb://149.28.134.173:27017/TapFood'
 
-export const username = ''
+export const username = 'admin'
 
-export const password = ''
+export const password = '15150408'
 
 export const secretkey = 'secretkey'
