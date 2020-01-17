@@ -1,9 +1,12 @@
+/* eslint-disable func-names */
+/* eslint-disable no-underscore-dangle */
 import mongoose from 'mongoose'
+import bcrypt from 'bcrypt'
 import table from '../tableName'
 
 const { Schema } = mongoose
 
-const Category = new Schema(
+const User = new Schema(
   {
     name: {
       type: String,
@@ -18,6 +21,10 @@ const Category = new Schema(
       default: '',
     },
     introduction: {
+      type: String,
+      default: '',
+    },
+    password: {
       type: String,
       default: '',
     },
@@ -56,4 +63,44 @@ const Category = new Schema(
   }
 )
 
-export default Category
+User.methods.comparePassword = (passw, cb) => {
+  bcrypt.compare(passw, this.password, (err, isMatch) => {
+    if (err) {
+      cb(err)
+      return
+    }
+    cb(null, isMatch)
+  })
+}
+
+User.methods.bindJson = function() {
+  return {
+    id: this._id,
+    name: this.name,
+    email: this.email,
+    phone: this.phone,
+    introduction: this.introduction,
+    avatar: this.avatar,
+    point: this.point,
+    money: this.money,
+    role: this.role,
+  }
+}
+
+export function generateHash(user, callback) {
+  const newUser = user
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) {
+      callback(err)
+    }
+    bcrypt.hash(user.password, salt, (err2, hash) => {
+      if (err2) {
+        callback(err2)
+      }
+      newUser.password = hash
+      callback(null, newUser)
+    })
+  })
+}
+
+export default User

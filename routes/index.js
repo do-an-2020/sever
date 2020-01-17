@@ -3,6 +3,6 @@ import suppliersRouter from './suppliers'
 
 const router = express.Router()
 
-router.use('/suppliers', suppliersRouter)
+router.use('/supplier', suppliersRouter)
 
 export default router

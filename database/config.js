@@ -1,4 +1,7 @@
-export const databaseName = 'mongodb://149.28.134.173:27017/TapFood'
+export const baseUrl = 'localhost'
+export const baseUrlVps = '149.28.134.173'
+
+export const databaseName = `mongodb://${baseUrl}:27017/TapFood`
 
 export const username = 'admin'
 

@@ -10,8 +10,7 @@ const options = {
 const setup = passport => {
   passport.use(
     new Strategy(options, (payload, callback) => {
-      console.log('TCL: payload', payload)
-      UserModel.findOne({ id: payload.id })
+      UserModel.findOne({ _id: payload.id })
         .then(r => {
           if (typeof callback === 'function') callback(null, r)
         })
