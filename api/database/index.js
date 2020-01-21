@@ -12,8 +12,8 @@ const options = {
   // },
   autoCreate: true,
   autoIndex: true,
-  user: 'admin',
-  pass: '15150408',
+  // user: 'admin',
+  // pass: '15150408',
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }

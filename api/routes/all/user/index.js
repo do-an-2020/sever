@@ -7,6 +7,7 @@ import table from '../../../database/tableName'
 import { UserSchema } from '../../../database/Schemas'
 import { secretkey } from '../../../database/config'
 import { generateHash } from '../../../database/Schemas/User'
+import upload from '../../../commons/upload'
 
 const User = mongoose.model(table.user, UserSchema)
 
@@ -41,7 +42,7 @@ usersRouter.get('/me', passport.authenticate('jwt', { session: false }), (req, r
 
 usersRouter.put('/me', () => {})
 
-usersRouter.post('/sign_up', (req, res) => {
+usersRouter.post('/sign_up', upload.none(), (req, res) => {
   const { email, password, phone, ...body } = req.body
   if (((email !== '' && email) || (phone !== '' && phone)) && password && password !== '') {
     // res.send({ a: 'xin chao' })

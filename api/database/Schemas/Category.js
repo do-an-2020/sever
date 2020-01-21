@@ -12,14 +12,6 @@ const Category = new Schema(
       type: String,
       default: '',
     },
-    //   create_date: {
-    //     type: Date,
-    //     default: Date.now,
-    //   },
-    //   update_date: {
-    //     type: Date,
-    //     default: Date.now,
-    //   },
     image: {
       type: String,
       default: null,
