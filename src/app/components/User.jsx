@@ -1,39 +1,39 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
 class User extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       user: {
-        name: ""
-      }
-    };
-    this.fetchUsers = this.fetchUsers.bind(this);
+        name: '',
+      },
+    }
+    this.fetchUsers = this.fetchUsers.bind(this)
   }
 
   fetchUsers() {
-    fetch("/users/getUsers")
+    fetch('/users/getUsers')
       .then(response => {
-        return response.json();
+        return response.json()
       })
       .then(json => {
         this.setState({
-          user: json
-        });
-      });
+          user: json,
+        })
+      })
   }
 
   componentWillMount() {
-    this.fetchUsers();
+    this.fetchUsers()
   }
 
   render() {
     return (
       <div className="user">
-        <h1>Hello {this.state.user.name}</h1>
+        <h1>Hello Tuấn óc chó :v</h1>
       </div>
-    );
+    )
   }
 }
 
-export default User;
+export default User
