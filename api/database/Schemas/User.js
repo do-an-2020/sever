@@ -1,7 +1,7 @@
 /* eslint-disable func-names */
 /* eslint-disable no-underscore-dangle */
 import mongoose from 'mongoose'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import table from '../tableName'
 
 const { Schema } = mongoose
