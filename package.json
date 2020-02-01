@@ -2,36 +2,45 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "cai j day",
-  "homepage": "http://localhost",
+  "homepage": "http://149.28.134.173/",
   "author": {
     "name": "a"
   },
   "main": "app.js",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
     "cookie-parser": "^1.4.3",
     "debug": "^4.1.0",
     "dotenv": "6.2.0",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mongodb": "^2.2.31",
+    "mongoose": "^5.8.7",
+    "multer": "^1.4.2",
     "node-sass": "^4.5.3",
     "node-sass-middleware": "^0.11.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
     "react": "^16.6.3",
+<<<<<<< HEAD
     "react-dom": "^16.6.3",
     "mongoose": "^5.8.7",
     "mongodb": "^2.2.31"
+=======
+    "react-dom": "^16.6.3"
+>>>>>>> 8a729a815420bf67f85d5f1172922fd251a73273
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/node": "^7.0.0",
-    "babel-loader": "^8.0.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-react-html-attrs": "^2.0.0",
-    "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-decorators": "^7.3.0",
     "@babel/plugin-proposal-do-expressions": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
     "@babel/plugin-proposal-function-bind": "^7.0.0",
     "@babel/plugin-proposal-function-sent": "^7.0.0",
@@ -46,8 +55,22 @@
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-react-html-attrs": "^2.0.0",
     "css-loader": "^0.28.7",
+    "eslint": "5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "4.0.0",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "3.0.1",
+    "eslint-plugin-react": "^7.12.4",
     "nodemon": "^1.18.7",
+    "prettier": "^1.16.4",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "styles-loader": "^1.0.0",
@@ -58,8 +81,9 @@
     "webpack-stream": "^5.2.1"
   },
   "scripts": {
-    "server": "nodemon app.js --exec babel-node",
+    "sever": "nodemon app.js --exec babel-node",
     "react": "webpack",
-    "start": "concurrently \"npm run react\" \"npm run server\""
+    "start": "concurrently \"npm run react\" \"npm run sever\"",
+    "lint": "eslint ."
   }
 }
