@@ -3,11 +3,11 @@ import express from 'express'
 import passport from 'passport'
 import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
-import table from '../../../database/tableName'
-import { UserSchema } from '../../../database/Schemas'
-import { secretkey } from '../../../database/config'
-import { generateHash } from '../../../database/Schemas/User'
-import upload from '../../../commons/upload'
+import table from '../../../../database/tableName'
+import { UserSchema } from '../../../../database/Schemas'
+import { secretkey } from '../../../../database/config'
+import { generateHash } from '../../../../database/Schemas/User'
+import upload from '../../../../commons/upload'
 
 const User = mongoose.model(table.user, UserSchema)
 
@@ -109,8 +109,9 @@ usersRouter.post('/sign_up', upload.none(), (req, res) => {
   res.send({ message: 'email hoặc số điện thoại hoặc mật khẩu không đúng định dạng' })
 })
 
-usersRouter.post('/sign_in', (req, res) => {
+usersRouter.post('/sign_in', upload.none(), (req, res) => {
   const { email, password, phone } = req.body
+  console.log('TCL: email', email)
   if (((email !== '' && email) || (phone !== '' && phone)) && password && password !== '') {
     const que = {}
     if (email) {

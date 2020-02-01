@@ -1,17 +1,23 @@
 /* eslint-disable no-underscore-dangle */
 import express from 'express'
-// import passport from 'passport'
-// import mongoose from 'mongoose'
+import passport from 'passport'
+import mongoose from 'mongoose'
 // import jwt from 'jsonwebtoken'
-// import table from '../../../database/tableName'
-// import { UserSchema } from '../../../database/Schemas'
+import table from '../../../../database/tableName'
+import { UserSchema } from '../../../../database/Schemas'
 // import { secretkey } from '../../../database/config'
 // import { generateHash } from '../../../database/Schemas/User'
 import userAll from '../../all/user'
+import upload from '../../../../commons/upload'
 
-// const User = mongoose.model(table.user, UserSchema)
+const User = mongoose.model(table.user, UserSchema)
 
 const usersRouter = express.Router()
+
+// usersRouter.post('/sign_in', upload.none(), (req, res) => {
+//   console.log('TCL: req', req)
+//   res.send({ a: 'xin chao' })
+// })
 
 usersRouter.use(userAll)
 
@@ -21,7 +27,7 @@ usersRouter.use(userAll)
 //       if (r) {
 //         const dataUser = r.bindJson()
 //         res.json({
-//           success: true,
+//           success: true,1
 //           message: '',
 //           data: { ...dataUser },
 //         })
@@ -40,6 +46,7 @@ usersRouter.use(userAll)
 //         message: 'user not found',
 //       })
 //     })
+//   res.send({ b: 'asds' })
 // })
 
 // usersRouter.put('/me', () => {})

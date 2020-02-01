@@ -1,5 +1,5 @@
 import express from 'express'
-import upload from '../../../commons/upload'
+import upload from '../../../../commons/upload'
 
 const categoryRouter = express.Router()
 
