@@ -10,7 +10,7 @@ const User = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      // required: true,
     },
     email: {
       type: String,
@@ -27,6 +27,7 @@ const User = new Schema(
     password: {
       type: String,
       default: '',
+      required: true,
     },
     //   create_date: {
     //     type: Date,
@@ -36,6 +37,10 @@ const User = new Schema(
     //     type: Date,
     //     default: Date.now,
     //   },
+    type: {
+      type: String,
+      required: true,
+    },
     avatar: {
       type: String,
       default: null,

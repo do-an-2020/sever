@@ -4,6 +4,8 @@ export const userTypes = {
   2: 'customer',
 }
 
+export const userTypeArr = ['admin', 'supplier', 'customer']
+
 export const userStatus = {
   0: 'inactive',
   1: 'active',
