@@ -91,6 +91,6 @@ categoryRouter.post(
   }
 )
 
-categoryRouter.put('', upload.single('a'), (req, res) => {})
+// categoryRouter.put('', upload.single('a'), (req, res) => {})
 
 export default categoryRouter
