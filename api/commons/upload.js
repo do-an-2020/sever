@@ -38,18 +38,15 @@ const Storage = multer.diskStorage({
             }
           })
       })
-    } else {
-      console.log('TCL: destination -> path', path)
-      if (!fs.existsSync(path)) {
-        fs.mkdir(path, null, er3 => {
-          if (er3) {
-            callback(null, path)
-          } else {
-            callback(null, path)
-          }
-        })
-      } else callback(null, path)
-    }
+    } else if (!fs.existsSync(path)) {
+      fs.mkdir(path, null, er3 => {
+        if (er3) {
+          callback(null, path)
+        } else {
+          callback(null, path)
+        }
+      })
+    } else callback(null, path)
   },
   filename(req, file, callback) {
     callback(null, `${file.fieldname}_${new Date().getTime()}_${file.originalname}`)

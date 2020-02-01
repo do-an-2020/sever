@@ -78,10 +78,10 @@ authRouters.post('/sign_up', upload.none(), (req, res) => {
                 success: false,
                 msg: 'sign up fail!',
               })
+              return
             }
             const newUser = new User(hashUser)
             newUser.save((err, user) => {
-              console.log('TCL: err', err)
               if (err) {
                 res.status(422)
                 res.json({ success: false, msg: 'Username already exists.' })
@@ -93,7 +93,7 @@ authRouters.post('/sign_up', upload.none(), (req, res) => {
               res.json({
                 success: true,
                 msg: 'Successful created new user.',
-                data: { ...dataUser, token: `Bearer ${token}` },
+                data: { ...dataUser, token: `${token}` },
               })
             })
           })
@@ -119,7 +119,6 @@ authRouters.post('/sign_up', upload.none(), (req, res) => {
 
 authRouters.post('/sign_in', upload.none(), (req, res) => {
   const { email, password, phone } = req.body
-  console.log('TCL: email', email)
   if (((email !== '' && email) || (phone !== '' && phone)) && password && password !== '') {
     const que = {}
     if (email) {
@@ -135,7 +134,7 @@ authRouters.post('/sign_in', upload.none(), (req, res) => {
         res.json({
           success: true,
           msg: 'Successful created new user.',
-          data: { ...dataUser, token: `Bearer ${token}` },
+          data: { ...dataUser, token: `${token}` },
         })
       })
       .catch(() => {

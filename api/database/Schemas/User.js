@@ -89,6 +89,7 @@ User.methods.bindJson = function() {
     point: this.point,
     money: this.money,
     role: this.role,
+    type: this.type,
   }
 }
 
