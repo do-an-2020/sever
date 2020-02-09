@@ -25,13 +25,9 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "react": "^16.6.3",
-<<<<<<< HEAD
     "react-dom": "^16.6.3",
     "mongoose": "^5.8.7",
     "mongodb": "^2.2.31"
-=======
-    "react-dom": "^16.6.3"
->>>>>>> 8a729a815420bf67f85d5f1172922fd251a73273
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
