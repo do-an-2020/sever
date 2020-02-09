@@ -45,7 +45,7 @@ authRouters.get('/me', passport.authenticate('jwt', { session: false }), (req, r
 authRouters.put('/me', () => {})
 
 authRouters.post('/sign_up', upload.none(), (req, res) => {
-  const { email, password, phone, type, ...body } = req.body
+  const { email, password, phone, type } = req.body
   if (!userTypeArr.includes(type)) {
     res422(res)
     return

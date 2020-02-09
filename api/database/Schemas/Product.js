@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import table from '../tableName'
 
 const { Schema } = mongoose
 
@@ -8,21 +9,49 @@ const Product = new Schema(
       type: String,
       required: true,
     },
+    images: {
+      type: Array,
+      default: [],
+    },
     description: {
       type: String,
       default: '',
+      required: true,
     },
-    // create_date: {
-    //   type: Date,
-    //   default: Date.now,
-    // },
-    // update_date: {
-    //   type: Date,
-    //   default: Date.now,
-    // },
-    image: {
+    short_description: {
       type: String,
+      default: '',
+    },
+    price: {
+      type: Number,
       default: null,
+    },
+    statusPrice: {
+      type: Number,
+      enum: [0, 1],
+      default: 1,
+    },
+    rate: {
+      type: Number,
+      max: 5,
+      min: 0,
+      default: 5,
+    },
+    total_review: {
+      type: Number,
+      default: 0,
+    },
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: table.category,
+    },
+    supplier: {
+      type: Schema.Types.ObjectId,
+      ref: table.user,
+    },
+    react_count: {
+      type: Number,
+      default: 0,
     },
     status: {
       type: Number,
