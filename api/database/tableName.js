@@ -3,5 +3,6 @@ const table = {
   user: 'user',
   product: 'product',
   role: 'role',
+  supplier: 'supplier',
 }
 export default table

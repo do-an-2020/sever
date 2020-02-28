@@ -41,6 +41,10 @@ const User = new Schema(
       type: String,
       required: true,
     },
+    supplier: {
+      type: Schema.Types.ObjectId,
+      ref: table.supplier,
+    },
     avatar: {
       type: String,
       default: null,
@@ -90,6 +94,7 @@ User.methods.bindJson = function() {
     money: this.money,
     role: this.role,
     type: this.type,
+    supplier: this.supplier,
   }
 }
 

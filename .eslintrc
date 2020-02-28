@@ -72,7 +72,13 @@
         }
       ],
       "react/require-default-props": [0, { "forbidDefaultForRequired": false }],
-      "global-require": 0 
+      "no-underscore-dangle": [
+        "error", {
+          "allowAfterSuper": true
+        }
+      ],
+      "global-require": 0
+      
     },
     "env": {
       "jest": true

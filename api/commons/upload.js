@@ -5,7 +5,7 @@ const multer = require('multer')
 const Storage = multer.diskStorage({
   destination(req, file, callback) {
     const date = new Date()
-    const path = `../storage/images/${date.getDate()}_${date.getMonth()}_${date.getFullYear()}`
+    const path = `../storage/images/${date.getDate()}_${date.getMonth() + 1}_${date.getFullYear()}`
     if (!fs.existsSync('../storage')) {
       fs.mkdir('../storage', null, er1 => {
         if (er1) {

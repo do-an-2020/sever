@@ -21,16 +21,32 @@ productRoutes.post(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const { category } = req.body
+    if (!category) {
+      res422(res, 'Thiếu thông tin')
+      return
+    }
     Category.findById(category)
       .then(r => {
         if (r && r.status === 1) {
-          const images = Array.isArray(req.files.images)
-            ? req.files.images.reduce((a, b) => {
+          const images = Array.isArray(req.files)
+            ? req.files.reduce((a, b) => {
                 return [...a, revertPath(b.path)]
               }, [])
             : []
-          const { name, description, short_description, price } = req.body
-          const handlePro = { name, description, short_description, price, images, category }
+          const { name, description, short_description, price, supplier } = req.body
+          if (!name || !price || !supplier) {
+            res422(res, 'Thiếu thông tin')
+            return
+          }
+          const handlePro = {
+            name,
+            description,
+            short_description,
+            price,
+            images,
+            category,
+            supplier,
+          }
           const newProduct = new Product(handlePro)
           newProduct
             .populate('category', ['_id', 'name'])
