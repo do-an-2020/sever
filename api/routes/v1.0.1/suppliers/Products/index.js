@@ -6,4 +6,6 @@ const productRoutes = express.Router()
 
 productRoutes.use(AllProduct)
 
+// productRoutes.get()
+
 export default productRoutes

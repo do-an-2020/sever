@@ -47,7 +47,7 @@ const Product = new Schema(
     },
     supplier: {
       type: Schema.Types.ObjectId,
-      ref: table.user,
+      ref: table.supplier,
       required: true,
     },
     react_count: {
