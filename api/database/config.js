@@ -2,7 +2,7 @@ export const baseUrl = 'localhost'
 export const baseUrlVps = '149.28.134.173'
 
 export const hostDatabase = 27017
-export const hostApi = 8000
+export const hostApi = 8001
 
 // export const hostDatabase = 6666
 // export const hostApi = 6161

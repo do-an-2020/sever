@@ -3,11 +3,12 @@ import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
 import { UserSchema } from '../../../database/Schemas'
 import table from '../../../database/tableName'
-import { res200, res422 } from '../../../commons/cusResponse'
+import { res422, res200 } from '../../../commons/cusResponse'
 import { userTypeArr } from '../../../constant/type'
 import { generateHash } from '../../../database/Schemas/User'
 import { secretkey } from '../../../database/config'
 import upload from '../../../commons/upload'
+import { limit, first } from '../../../constant/pages'
 
 const User = mongoose.model(table.user, UserSchema)
 
@@ -15,10 +16,37 @@ const usersRouter = express.Router()
 
 usersRouter.get('', async (req, res) => {
   try {
-    const result = await User.find().exec()
-    res200(res, result)
+    const { page = first } = req.query.page
+    const { pageSize = limit } = req.query.pageSize
+    User.countDocuments().then(count => {
+      const maxPage = Math.floor(count / pageSize) + 1
+      if (page > maxPage) {
+        res422(res, 'Không tìm thấy dữ liệu')
+        return
+      }
+      User.find({ email: { $regex: req.query.keyword || '', $options: 'i' } }, null, {
+        skip: (page - 1) * pageSize,
+        limit,
+      })
+        .populate('submiter', ['_id', 'name'])
+        .then(r => {
+          const data = {
+            data: r,
+            page: {
+              current: page,
+              pageSize,
+              total: maxPage,
+              nextPage: page < maxPage ? page + 1 : null,
+            },
+          }
+          res200(res, data)
+        })
+        .catch(e => {
+          res422(res, e)
+        })
+    })
   } catch (error) {
-    // res.status(500).send(error)
+    res.status(500).send(error)
   }
 })
 
