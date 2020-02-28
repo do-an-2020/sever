@@ -67,3 +67,4 @@ yarn.lock
 Mobile/ios/Pods/
 Mobile/ios/Podfile.lock
 dist/
+.vscode/
