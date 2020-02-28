@@ -12,7 +12,6 @@ export const res200 = (res, data) => {
   res.status(200)
   res.send({
     success: true,
-    status: 200,
     data,
   })
 }
