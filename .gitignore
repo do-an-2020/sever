@@ -37,6 +37,8 @@ npm-debug.log
 yarn-error.log
 Mobile/node_modules/
 
+database/config.js
+
 # BUCK
 buck-out/
 \.buckd/
