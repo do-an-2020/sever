@@ -4,12 +4,11 @@ import bodyParser from 'body-parser'
 import _ from 'lodash'
 import './api/database'
 import passport from 'passport'
-import multer from 'multer'
+import cors from 'cors'
 import setup from './api/database/passport_config'
 import routers from './api/routes'
 import { hostApi } from './api/database/config'
 
-const upload = multer()
 // import users from "./routes/users";
 const path = require('path')
 
@@ -20,6 +19,8 @@ app.use(express.static(`${__dirname}/src`))
 app.use(bodyParser.json())
 // for parsing application/xwww-
 app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(cors())
 
 // for parsing multipart/form-data
 // app.use(upload.array())
@@ -77,8 +78,14 @@ _.uniq(list).forEach(rou => {
 
 app.use((err, req, res, next) => {
   console.log('This is the invalid field ->', err.field)
-  // res.header('Access-Control-Allow-Origin', '*')
-  // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Authorization'
+  )
+  res.header('Content-Type', 'application/json')
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+  res.header('Access-Control-Allow-Credentials', 'true')
   // if (err.status === 401) {
   //   res.send({
   //     message: 'Không có quyền truy cập',
