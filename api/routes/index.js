@@ -5,5 +5,4 @@ const router = express.Router()
 
 router.use('/v101', v101)
 
-
 export default router

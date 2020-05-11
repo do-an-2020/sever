@@ -76,7 +76,7 @@
     "webpack-stream": "^5.2.1"
   },
   "scripts": {
-    "sever": "nodemon app.js --exec babel-node",
+    "server": "nodemon app.js --exec babel-node",
     "react": "webpack",
     "start": "concurrently \"npm run react\" \"npm run sever\"",
     "lint": "eslint ."

@@ -37,6 +37,10 @@ const Supplier = new Schema(
       enum: [0, 1, 2, 3],
       default: 1,
     },
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: table.category,
+    },
   },
   {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
