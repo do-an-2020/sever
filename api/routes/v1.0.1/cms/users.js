@@ -16,18 +16,19 @@ const usersRouter = express.Router()
 
 usersRouter.get('', async (req, res) => {
   try {
-    const { page = first } = req.query.page
-    const { pageSize = limit } = req.query.pageSize
+    const { page = first } = req.query
+    const { pageSize = limit } = req.query
     User.countDocuments().then(count => {
-      const maxPage = Math.floor(count / pageSize) + 1
+      const maxPage = Math.floor(count)
       if (page > maxPage) {
         res422(res, 'Không tìm thấy dữ liệu')
         return
       }
-      User.find({ email: { $regex: req.query.keyword || '', $options: 'i' } }, null, {
+      const pa = {
         skip: (page - 1) * pageSize,
-        limit,
-      })
+        limit: Number(pageSize),
+      }
+      User.find({ email: { $regex: req.query.keyword || '', $options: 'i' } }, null, pa)
         .populate('submiter', ['_id', 'name'])
         .then(r => {
           const data = {
@@ -35,8 +36,7 @@ usersRouter.get('', async (req, res) => {
             page: {
               current: page,
               pageSize,
-              total: maxPage,
-              nextPage: page < maxPage ? page + 1 : null,
+              totalRows: maxPage,
             },
           }
           res200(res, data)
