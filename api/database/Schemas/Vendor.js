@@ -1,11 +1,17 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable func-names */
 import mongoose from 'mongoose'
 import table from '../tableName'
 
 const { Schema } = mongoose
 
-const Supplier = new Schema(
+const Vendor = new Schema(
   {
     name: {
+      type: String,
+      required: true,
+    },
+    phone: {
       type: String,
       required: true,
     },
@@ -47,4 +53,10 @@ const Supplier = new Schema(
   }
 )
 
-export default Supplier
+// tạo methods để lấy ra id
+
+Vendor.methods.getId = function() {
+  return this._id
+}
+
+export default Vendor

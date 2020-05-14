@@ -50,7 +50,7 @@ const Category = new Schema(
 
     // tổng số nhà cung cấp
     // đối chỉ đối với các category tổng
-    total_supplier: {
+    total_vendor: {
       type: Number,
       default: 0,
     },
@@ -69,9 +69,9 @@ const Category = new Schema(
     },
 
     // thuộc vàonhà cung cấp nào
-    supplier: {
+    vendor: {
       type: Schema.Types.ObjectId,
-      ref: table.supplier,
+      ref: table.vendor,
     },
   },
   {

@@ -39,8 +39,8 @@ SupplierRouter.post(
       res422(res, 'Tài khoản này đã liên kết với nhà cung cấp')
       return
     }
-    const { name, description, address, lat, long } = req.body
-    if (!name || !address) {
+    const { name, description, address, lat, long, category } = req.body
+    if (!name || !address || !category) {
       res422(res, 'Thiếu thông tin')
       return
     }
@@ -53,9 +53,12 @@ SupplierRouter.post(
       lat,
       long,
       image: revertPath(path),
+      category,
     }
 
     const newSup = new Supplier(handle)
+
+    mongoose.createConnection()
 
     newSup
       .save()

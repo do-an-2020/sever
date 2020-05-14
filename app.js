@@ -32,7 +32,7 @@ app.get('/abc', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'src', 'app', 'index.jsx'))
 })
 
-app.use('/', routers)
+app.use('/api', routers)
 
 app.use(passport.initialize())
 

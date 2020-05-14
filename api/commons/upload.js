@@ -49,7 +49,10 @@ const Storage = multer.diskStorage({
     } else callback(null, path)
   },
   filename(req, file, callback) {
-    callback(null, `${file.fieldname}_${new Date().getTime()}_${file.originalname}`)
+    callback(
+      null,
+      `${`${file.fieldname}`.replace(/\[\]/, '')}_${new Date().getTime()}_${file.originalname}`
+    )
   },
 })
 

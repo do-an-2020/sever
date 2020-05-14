@@ -5,6 +5,7 @@ const table = {
   role: 'role',
   supplier: 'supplier',
   location: 'location',
+  vendor: 'vendor',
 }
 
 export default table

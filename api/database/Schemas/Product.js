@@ -45,9 +45,9 @@ const Product = new Schema(
       type: Schema.Types.ObjectId,
       ref: table.category,
     },
-    supplier: {
+    vendor: {
       type: Schema.Types.ObjectId,
-      ref: table.supplier,
+      ref: table.vendor,
       required: true,
     },
     react_count: {

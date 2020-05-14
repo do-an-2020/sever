@@ -7,7 +7,7 @@ export const baseUrlVps = '149.28.134.173'
 export const hostDatabase = 6666
 export const hostApi = 6161
 
-export const databaseName = `mongodb://${baseUrl}:${hostDatabase}/TapFood`
+export const databaseName = `mongodb://${baseUrl}:${hostDatabase}/TapFood?replicaSet=rs`
 
 export const username = 'admin'
 
