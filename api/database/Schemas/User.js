@@ -41,9 +41,9 @@ const User = new Schema(
       type: String,
       required: true,
     },
-    supplier: {
+    vendor: {
       type: Schema.Types.ObjectId,
-      ref: table.supplier,
+      ref: table.vendor,
     },
     avatar: {
       type: String,
@@ -66,11 +66,21 @@ const User = new Schema(
       enum: [0, 1, 2, 3],
       default: 1,
     },
+    device_token: {
+      type: Array,
+      default: [],
+    },
   },
   {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
   }
 )
+
+// tạo methods để lấy ra id
+
+User.methods.getId = function() {
+  return this._id
+}
 
 User.methods.comparePassword = (passw, cb) => {
   bcrypt.compare(passw, this.password, (err, isMatch) => {
@@ -94,7 +104,7 @@ User.methods.bindJson = function() {
     money: this.money,
     role: this.role,
     type: this.type,
-    supplier: this.supplier,
+    vendor: this.vendor,
   }
 }
 
@@ -110,6 +120,24 @@ export function generateHash(user, callback) {
       }
       newUser.password = hash
       callback(null, newUser)
+    })
+  })
+}
+
+export const generateHashPromise = user => {
+  const newUser = user
+  return new Promise(resolve => {
+    bcrypt.genSalt(10, (err, salt) => {
+      if (err) {
+        throw err
+      }
+      bcrypt.hash(user.password, salt, (err2, hash) => {
+        if (err2) {
+          throw err2
+        }
+        newUser.password = hash
+        resolve(newUser)
+      })
     })
   })
 }

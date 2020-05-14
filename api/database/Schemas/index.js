@@ -2,7 +2,9 @@ import Category from './Category'
 import Product from './Product'
 import User from './User'
 
-import { default as SupplierSchema } from './Supplier'
+export { default as SupplierSchema } from './Supplier'
+export { default as VendorSchema } from './Vendor'
+export { default as LocationSchema } from './Location'
 
 export { default as CategorySchema } from './Category'
 export { default as ProductSchema } from './Product'

@@ -71,13 +71,9 @@ productRoutes.post(
                   $inc: { total_products: 1 },
                 },
                 { new: true }
-              )
-                .then(e => {
-                  console.log('TCL: e', e)
-                })
-                .catch(aee => {
-                  console.log('TCL: aee', aee)
-                })
+              ).then(e => {
+                console.log('TCL: e', e)
+              })
               pro
                 .populate('category', ['_id', 'name'])
                 .populate('supplier', ['_id', 'name'])
@@ -90,7 +86,7 @@ productRoutes.post(
         }
       })
       .catch(e => {
-        console.log('TCL: e', e)
+        console.log('e', e)
         res422(res, 'Không tìm thấy category')
       })
   }

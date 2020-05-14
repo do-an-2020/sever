@@ -48,11 +48,9 @@ categoryRouter.get('', (req, res) => {
 categoryRouter.get('/:id', (req, res) => {
   const { id } = req.params
   CateModel.findById(id)
-    .populate('submiter', ['_id', 'name'])
+    // .populate('submiter', ['_id', 'name'])
     .then(cate => {
-      res200(res, {
-        data: cate.bindJson(),
-      })
+      res200(res, cate.bindJson())
     })
     .catch(e => {
       res422(res, e)
@@ -67,7 +65,7 @@ categoryRouter.post(
   (req, res) => {
     // lấy thông tin từ body
     const { name, description } = req.body
-    const { path } = req.file
+    const { path = '' } = req.file
     const { _id } = req.user
 
     // tạo object mới

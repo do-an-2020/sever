@@ -1,8 +1,8 @@
 import express from 'express'
-import v101 from './v1.0.1'
+import create from './create'
 
 const router = express.Router()
 
-router.use('/v1', v101)
+router.use('', create)
 
 export default router

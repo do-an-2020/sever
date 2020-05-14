@@ -8,10 +8,16 @@ export const res401 = res => {
   res.send({ message: 'Không có quyền truy cập' })
 }
 
-export const res200 = (res, data) => {
-  res.status(200)
-  res.send({
+export const res200 = (res, data, page) => {
+  const response = {
     success: true,
     data,
-  })
+  }
+
+  if (page) {
+    response.page = page
+  }
+
+  res.status(200)
+  res.send(response)
 }
