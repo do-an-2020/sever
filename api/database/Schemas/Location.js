@@ -63,7 +63,7 @@ const LocationSchema = new Schema({
   },
 })
 
-LocationSchema.methods.getFullJson = function() {
+LocationSchema.methods.bindJson = function() {
   return {
     id: this._id,
     name: this.name,

@@ -59,4 +59,29 @@ Vendor.methods.getId = function() {
   return this._id
 }
 
+Vendor.methods.getBase = function() {
+  return this.base
+}
+
+Vendor.methods.getCategory = function() {
+  return this.category
+}
+
+Vendor.methods.getCity = function() {
+  return this.city
+}
+
+Vendor.methods.bindJson = function() {
+  return {
+    id: this._id,
+    name: this.name,
+    phone: this.phone,
+    description: this.description,
+    image: this.image,
+    city: this.city,
+    category: this.category,
+    base: this.base,
+  }
+}
+
 export default Vendor
