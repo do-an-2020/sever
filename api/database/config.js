@@ -8,6 +8,7 @@ export const hostDatabase = 6666
 export const hostApi = 6161
 
 export const databaseName = `mongodb://${baseUrl}:${hostDatabase}/TapFood?replicaSet=rs`
+// export const databaseName = `mongodb://${baseUrl}:${hostDatabase}/TapFood`
 
 export const username = 'admin'
 
