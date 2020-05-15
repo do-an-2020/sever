@@ -6,6 +6,7 @@ const table = {
   supplier: 'supplier',
   location: 'location',
   vendor: 'vendor',
+  food: 'food',
 }
 
 export default table

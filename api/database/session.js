@@ -23,15 +23,15 @@ export const runWithSession = async (process, successcb, errorcb) => {
     // func chay trong session
     // param bao gồm session và func commit session
     if (typeof process === 'function') {
-      process(session, async () => {
+      await process(session, async () => {
         await session.commitTransaction()
       })
     }
   } catch (error) {
-    await session.abortTransaction()
     if (typeof errorcb === 'function') {
       errorcb(error)
     }
+    await session.abortTransaction()
   } finally {
     // ket thuc tat ca se ket thuc session
     if (session) session.endSession()

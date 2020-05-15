@@ -7,7 +7,7 @@ export { default as VendorSchema } from './Vendor'
 export { default as LocationSchema } from './Location'
 
 export { default as CategorySchema } from './Category'
-export { default as ProductSchema } from './Product'
+export { default as FoodSchema } from './Product'
 export { default as UserSchema } from './User'
 
 export default { Category, User, Product }

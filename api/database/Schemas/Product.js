@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable func-names */
 import mongoose from 'mongoose'
 import table from '../tableName'
 
@@ -9,7 +11,7 @@ const Product = new Schema(
       type: String,
       required: true,
     },
-    images: {
+    image: {
       type: Array,
       default: [],
     },
@@ -64,5 +66,64 @@ const Product = new Schema(
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
   }
 )
+
+Product.methods.bindJson = function() {
+  return {
+    id: this._id,
+    name: this.name,
+    image: this.image,
+    description: this.description,
+    price: this.price,
+    category: this.category,
+    short_description: this.short_description,
+    react_count: this.react_count,
+    rate: this.rate,
+    total_review: this.total_review,
+  }
+}
+
+Product.methods.getId = function() {
+  return this._id
+}
+
+Product.methods.getName = function() {
+  return this.name
+}
+
+Product.methods.getImage = function() {
+  return this.image
+}
+
+Product.methods.getDescription = function() {
+  return this.description
+}
+
+Product.methods.getPrice = function() {
+  return this.price
+}
+
+Product.methods.getCategory = function() {
+  return this.category
+}
+
+Product.methods.getShortDescription = function() {
+  return this.short_description
+}
+
+Product.methods.getReactCount = function() {
+  return this.react_count
+}
+
+Product.methods.getRate = function() {
+  return this.rate
+}
+
+Product.methods.getTotalReview = function() {
+  return this.total_review
+}
+
+Product.methods.getStatus = function() {
+  return this.status
+}
 
 export default Product
