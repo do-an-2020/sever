@@ -28,7 +28,7 @@ categoryRouter.get('', (req, res) => {
           const data = {
             data: r,
             page: {
-              current: Number(page),
+              current: page,
               limit,
               total: maxPage,
               nextPage: page < maxPage ? page + 1 : null,
