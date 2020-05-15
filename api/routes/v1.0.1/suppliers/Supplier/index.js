@@ -12,7 +12,6 @@ const SupplierRouter = express.Router()
 
 const Supplier = mongoose.model(table.supplier, SupplierSchema)
 const User = mongoose.model(table.user, userSchema)
-
 SupplierRouter.get('', passport.authenticate('jwt', { session: false }), (req, res) => {
   const { supplier } = req.user
   Supplier.findById(supplier)

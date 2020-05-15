@@ -32,11 +32,11 @@ app.get('/abc', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'src', 'app', 'index.jsx'))
 })
 
-app.use('/api', routers)
-
 app.use(passport.initialize())
 
 setup(passport)
+
+app.use('/api', routers)
 
 const list = []
 

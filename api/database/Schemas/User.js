@@ -92,6 +92,18 @@ User.methods.comparePassword = (passw, cb) => {
   })
 }
 
+// check password
+User.methods.comparePasswordPromise = function(pass) {
+  return new Promise(resolve => {
+    bcrypt.compare(pass, this.password, (err, isMatch) => {
+      if (err) {
+        throw err
+      }
+      resolve(isMatch)
+    })
+  })
+}
+
 User.methods.bindJson = function() {
   return {
     id: this._id,

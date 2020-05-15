@@ -1,6 +1,5 @@
 import express from 'express'
 import { model, startSession } from 'mongoose'
-import { ObjectId } from 'mongodb'
 import upload from '../../../../commons/upload'
 import { res422, res200 } from '../../../../commons/cusResponse'
 import table from '../../../../database/tableName'
@@ -10,7 +9,7 @@ import {
   LocationSchema,
   CategorySchema,
 } from '../../../../database/Schemas'
-import { generateHash, generateHashPromise } from '../../../../database/Schemas/User'
+import { generateHashPromise } from '../../../../database/Schemas/User'
 import { revertPath } from '../../../../commons/revertPath'
 
 const Vendor = model(table.vendor, VendorSchema)
@@ -49,7 +48,6 @@ router.post('/create', upload.single('image'), async (req, res) => {
     category,
     city,
   } = req.body
-  console.log('base', base)
 
   // check null cac truong
   if (
