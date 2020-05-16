@@ -7,6 +7,7 @@ import passport from 'passport'
 import cors from 'cors'
 import setup from './api/database/passport_config'
 import routers from './api/routes'
+import image from './api/routes/image'
 import { hostApi } from './api/database/config'
 
 // import users from "./routes/users";
@@ -37,6 +38,7 @@ app.use(passport.initialize())
 setup(passport)
 
 app.use('/api', routers)
+app.use('', image)
 
 const list = []
 
