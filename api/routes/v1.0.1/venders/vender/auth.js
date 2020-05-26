@@ -65,4 +65,14 @@ router.get('/me', passport.authenticate('jwt', { session: false }), async (req, 
   }
 })
 
+router.get('/me/account', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  try {
+    res200(res, {
+      ...req.user.bindJson(),
+    })
+  } catch (error) {
+    res422(res, error)
+  }
+})
+
 export default router

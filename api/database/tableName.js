@@ -7,6 +7,8 @@ const table = {
   location: 'location',
   vendor: 'vendor',
   food: 'food',
+  room: 'room',
+  message: 'message',
 }
 
 export default table
