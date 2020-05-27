@@ -1,7 +1,7 @@
 import express from 'express'
 import suppliersRouter from './suppliers'
 import cmsRouter from './cms'
-import vendorRoutes from './vendors'
+import vendorRoutes from './venders'
 import master from './master'
 
 const router = express.Router()
@@ -9,7 +9,7 @@ const router = express.Router()
 
 // router.use('/cms', cmsRouter)
 // router.use('/supplier', suppliersRouter)
-router.use('/vendorapp', vendorRoutes)
+router.use('/venderapp', vendorRoutes)
 router.use('/master', master)
 
 export default router

@@ -9,6 +9,7 @@ import setup from './api/database/passport_config'
 import routers from './api/routes'
 import image from './api/routes/image'
 import { hostApi } from './api/database/config'
+import setupSocket from './modules/chat/routes'
 
 // import users from "./routes/users";
 const path = require('path')
@@ -100,6 +101,10 @@ app.use((err, req, res, next) => {
   next()
 })
 
-app.listen(hostApi, () => {
+const server = require('http').createServer(app)
+
+setupSocket(server)
+
+server.listen(hostApi, () => {
   console.log(`Server is listening on port ${hostApi}`)
 })
