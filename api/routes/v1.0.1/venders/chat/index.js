@@ -13,14 +13,18 @@ const router = express.Router()
 
 router.post('/single_chat', upload.none(), async (req, res) => {
   const { user } = req.body
-  const newUser = user.map(async i => {
-    const findUser = await User.findById(i)
-    return {
-      info: i,
-      name: findUser.bindJson().name,
-    }
-  })
-  const result = await Room.insertMany({ user: newUser })
+  console.log('user', user)
+  const newUser = await Promise.all(
+    user.map(async i => {
+      const findUser = await User.findById(i)
+      return {
+        info: i,
+        name: findUser.bindJson().name,
+      }
+    })
+  )
+  console.log('newUser', newUser)
+  const result = await Room.insertMany({ users: newUser })
   res200(res, { id: result[0]?.getId() })
 })
 
